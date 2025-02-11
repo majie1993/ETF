@@ -71,7 +71,7 @@ export const createGrid = (options: GridOptions): Grid => {
   } = options;
   const buyPrice = gear * price;
   // 买入必须按照100份整数
-  const buyCount = Math.floor(__buyAmount / buyPrice / 100) * 100;
+  const buyCount = Math.floor(__buyAmount / buyPrice);
   const buyAmount = buyCount * buyPrice;
   const sellPrice = (gear + percent) * price;
   const currentAmount = buyCount * sellPrice;
@@ -80,7 +80,7 @@ export const createGrid = (options: GridOptions): Grid => {
   let retainedProfits = profits * numberOfRetainedProfits;
   // 卖出必须按照100份整数
   const sellCount =
-    Math.floor((currentAmount - retainedProfits) / sellPrice / 100) * 100;
+    Math.floor((currentAmount - retainedProfits) / sellPrice);
   const sellAmount = sellCount * sellPrice;
   retainedProfits = currentAmount - sellAmount;
   const retainedCount = retainedProfits / sellPrice;
